@@ -31,13 +31,11 @@ local metadata_command = {
 	"--color=never",
 }
 
----comment
 ---@param target Target
 local function expand_command(target)
 	local crate_type, name = target.crate_types, target.name
 	local command
-    vim.print(crate_type)
-    local joined = vim.iter(crate_type):join("")
+	local joined = vim.iter(crate_type):join("")
 	if string.match(joined, "lib") then
 		command = { "cargo", "expand", "--lib", "--package=" .. name }
 	else
